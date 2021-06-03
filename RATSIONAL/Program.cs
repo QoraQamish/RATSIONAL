@@ -10,12 +10,26 @@ namespace RATSIONAL
     {
         static void Main(string[] args)
         {
-            Ratsional[] ratsionals = new Ratsional[3];
-            ratsionals[0] = new Ratsional(12, 4);
-            ratsionals[1] = new Ratsional(24, 6);
-            ratsionals[2] = new Ratsional();
+            Ratsional[] ratsionals = new Ratsional[2];
+
+            Console.WriteLine("Birinchi soni suratni kirting");
+            int surat1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Ikkinchi soni mahrajni kiriting");
+            int maxraj1 = int.Parse(Console.ReadLine());
+
+            ratsionals[0] = new Ratsional(surat1, maxraj1);
+
+            Console.WriteLine("Ikkinchi soni suratni kiriting");
+            int surat2 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Ikkinchi soni maxrajni kiriting");
+            int maxraj2 = int.Parse(Console.ReadLine());
+
+            ratsionals[1] = new Ratsional(surat2, maxraj2);
+
+            Ratsional resalt = new Ratsional();
             //1-masala: Berilgan a va b ratsional sonlar o'zaro tengmi?
-            if(ratsionals[2].Tekshir(ratsionals[0], ratsionals[1]))
+            Console.WriteLine("______________Tenglik________________\n");
+            if (resalt.Tekshir(ratsionals[0], ratsionals[1]))
             {
                 Console.WriteLine("Ushbu ikkita ratsional son o'zaro teng");
             }
@@ -23,15 +37,33 @@ namespace RATSIONAL
             {
                 Console.WriteLine("Ushbu ikkita ratsional son o'zaro teng emas");
             }
+            Console.WriteLine("\n____________Amal__________________");
             //2-masala: Berilgan a va b ratsional sonni yig'indisini toping
-            ratsionals[2] = ratsionals[2].Sum(ratsionals[0], ratsionals[1]);
-            Console.WriteLine(ratsionals[2].surat+"/"+ratsionals[2].maxraj);
+            Console.WriteLine("Beringan ratsional soni yig'indisi");
+            resalt = resalt.Sum(ratsionals[0], ratsionals[1]);
+            Console.WriteLine(resalt.surat+"/"+ resalt.maxraj);
+            Console.WriteLine("Beringan ratsional soni ayirmasi");
+            resalt = resalt.Ayir(ratsionals[0], ratsionals[1]);
+            Console.WriteLine(resalt.surat + "/" + resalt.maxraj);
+            Console.WriteLine("Beringan ratsional soni ko'paytmasi");
+            resalt = resalt.Kopay(ratsionals[0], ratsionals[1]);
+            Console.WriteLine(resalt.surat + "/" + resalt.maxraj);
+            Console.WriteLine("Beringan ratsional soni bo'linmasi");
+            resalt = resalt.Bol(ratsionals[0], ratsionals[1]);
+            Console.WriteLine(resalt.surat + "/" + resalt.maxraj);
 
             //3-masala: Berilgan a va b ratsional sonni qisqartring:
+            Console.WriteLine("________________Qisqatma_____________\n");
+           
             Console.WriteLine("Berilgan a va b ratsional sonni qisqardi");
-           ratsionals[2]=ratsionals[2].Qisqartirish(ratsionals[2]);
-            Console.WriteLine(ratsionals[2].surat+"/"+ratsionals[2].maxraj);
-
+            resalt = resalt.Qisqartirish(ratsionals[0]);
+            Console.WriteLine(resalt.surat+"/"+ resalt.maxraj);
+            resalt = resalt.Qisqartirish(ratsionals[1]);
+            Console.WriteLine(resalt.surat + "/" + resalt.maxraj);
+           
+            Console.WriteLine("\n________________Eng katasini topish______________");
+            resalt = resalt.SortBuubly(ratsionals);
+            Console.WriteLine(resalt.surat + "/" + resalt.maxraj);
             Console.ReadKey();
 
         }
